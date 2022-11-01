@@ -9,7 +9,8 @@ namespace SnakeAndLadderProblem
 
         public void Position()
         {
-            Console.WriteLine("Lets Play!!!" + "\t" + "You are at - " + playerPosition);
+            Console.WriteLine("Lets Play!!!");
+            Console.WriteLine("You are at " + playerPosition);
         }
         public int DiceRoll()
         {
@@ -30,7 +31,9 @@ namespace SnakeAndLadderProblem
                         this.playerPosition += 0;
                         break;
                     case LADDER:
-                        this.playerPosition += DiceRoll();
+                        int die = DiceRoll();
+                        if (this.playerPosition + die <= WINNING_POSITION)
+                            this.playerPosition += die;
                         break;
                     case SNAKE:
                         this.playerPosition -= DiceRoll();
@@ -42,6 +45,7 @@ namespace SnakeAndLadderProblem
                 }
                 Console.WriteLine("You are at " + this.playerPosition);
             }
+            Console.WriteLine("Hurray !! You won the GAME");
         }
     }
 }
