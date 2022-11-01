@@ -15,7 +15,7 @@ namespace SnakeAndLadderProblem
         {
             int dice = random.Next(1, 7);
             Console.WriteLine("Output of Dice - " + dice);
-            Console.WriteLine("You are at -", _ = this.playerPosition);
+            _ = this.playerPosition;
             return dice;
         }
         public void Check()
@@ -34,9 +34,13 @@ namespace SnakeAndLadderProblem
                         break;
                     case SNAKE:
                         this.playerPosition -= DiceRoll();
+                        if (this.playerPosition < 0)
+                        {
+                            this.playerPosition = 0;
+                        }
                         break;
                 }
-                Console.WriteLine(this.playerPosition);
+                Console.WriteLine("You are at " + this.playerPosition);
             }
         }
     }
